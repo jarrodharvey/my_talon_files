@@ -9,19 +9,13 @@ tag(): user.rango_direct_clicking
     mode.disable("user.game")
     mode.enable("command")
 
+<number_small> times: core.repeat_command(number_small - 1)
+(repeat that | twice): core.repeat_command(1)
+
 # From community keys.talon
-go <user.arrow_keys>: user.move_cursor(arrow_keys)
-<user.letter>: key(letter)
-(ship | uppercase) <user.letters> [(lowercase | sunk)]:
-    user.insert_formatted(letters, "ALL_CAPS")
-<user.symbol_key>: key(symbol_key)
+[go] <user.arrow_keys>: user.move_cursor(arrow_keys)
 <user.function_key>: key(function_key)
-<user.special_key>: key(special_key)
-<user.modifiers> <user.unmodified_key>: key("{modifiers}-{unmodified_key}")
-# for key combos consisting only of modifiers, eg. `press super`.
-press <user.modifiers>: key(modifiers)
-# for consistency with dictation mode and explicit arrow keys if you need them.
-press <user.keys>: key(keys)
+#press <user.keys>: key(keys)
 
 # From gaze-ocr
 [left] (touch | click) <user.timestamped_prose>$:

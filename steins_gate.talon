@@ -16,3 +16,16 @@ exit phone:
 symbol phone: 
     user.mouse_helper_move_image_relative("/home/jarrod/Pictures/click_symbols/gate_phone.png")
     user.super_click()
+
+symbol scroll: 
+    user.mouse_helper_move_image_relative("/home/jarrod/Pictures/click_symbols/gate_scroll.png")
+    user.super_click()
+    sleep(1s)
+    user.super_click()
+    sleep(1s)
+    user.super_click()
+    sleep(1s)
+    user.super_click()
+    sleep(1s)
+    user.super_click()
+    sleep(1s)

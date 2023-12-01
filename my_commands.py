@@ -19,3 +19,10 @@ class Actions:
         ctrl.mouse_click(button=1, down=True)
         time.sleep(1)
         ctrl.mouse_click(button=1, up=True)
+    def walk(arrow_dir: str):
+        """Walk in a direction"""
+        actions.key(f"{arrow_dir}")
+        time.sleep(0.3)
+    def hold_arrow(key: str):
+        """Holds down a specified arrow key"""
+        actions.key(f"{key}:down")
