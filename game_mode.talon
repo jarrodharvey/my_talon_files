@@ -18,7 +18,7 @@ tag(): user.rango_direct_clicking
 #press <user.keys>: key(keys)
 
 # From gaze-ocr
-[left] (touch | click) <user.timestamped_prose>$:
+[left] (touch | click | quick) <user.timestamped_prose>$:
     user.click_text(timestamped_prose)
 
 # From mouse.talon

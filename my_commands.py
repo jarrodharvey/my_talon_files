@@ -26,3 +26,8 @@ class Actions:
     def hold_arrow(key: str):
         """Holds down a specified arrow key"""
         actions.key(f"{key}:down")
+    def dialogue_triangle_on_screen():
+        """Detects if the Pokemon dialogue triangle is on screen"""
+        # Note: This only works when playing Pokemon Full Screen. If you're playing in a window, you'll need to change the image.
+        triangle_coordinates = actions.user.mouse_helper_find_template_relative("/home/jarrod/Pictures/click_symbols/dialogue_triangle.png")
+        return(len(triangle_coordinates) > 0)
