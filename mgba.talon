@@ -5,9 +5,9 @@ mode: user.game
 settings():
     key_wait = 20
 
-(bang | banks | bank | than | hang | fan | tanks | bin | thanks): key("x")
-(back | pack): key("z")
-(pause | house): key("return")
+(bang | banks | bank | than | hang | fan | tanks | bin | thanks | pan | fine | in): key("x")
+(back | pack | track): key("z")
+(pause | house | boss | horse): key("return")
 select: key("backspace")
 (trig | rig | trick) left: key("a")
 trig right: key("s")
@@ -16,6 +16,9 @@ trig right: key("s")
     user.walk(arrow_keys)
 
 # homophones for arrow commands
+opt free:
+    user.walk("up")
+    repeat(3)
 downfall:
     user.walk("down")
     repeat(4) 
@@ -31,6 +34,10 @@ apter:
 lefter:
     user.walk("left")
     repeat(2)
+caret: user.walk("right")
+rightful:
+    user.walk("right")
+    repeat(4)
 
 (spin | ben | it's been | and ) <user.arrow_keys>:
     key(arrow_keys)
@@ -50,13 +57,14 @@ mash: user.start_keypress("x", 1)
 advance: user.start_keypress("x", 1, "True")
 (chatter | chatta): user.start_keypress("x", 2, "True")
 careful: user.start_keypress("x", 3)
-grind: user.start_grinding()
+(grind | grange): user.start_grinding()
 
 double: user.multi_keypress("x", 0.3, 2)
 triple: user.multi_keypress("x", 0.3, 3)
 
 double back: user.multi_keypress("z", 1, 2)
 triple back: user.multi_keypress("z", 2, 3)
+(quad | court | what) back: user.multi_keypress("z", 2, 4)
 
 run away: 
     key("x")
@@ -67,7 +75,14 @@ run away:
     sleep(300ms)
     key("x")
 
-save game: 
+(save game | safe day): 
     key("return")
     sleep(1s)
     user.start_keypress("down", 0.4)
+
+(pokeball | enemy team): key("a")
+
+pokemon: 
+    key("return")
+    sleep(1s)
+    user.press_key_until_image_appears("/home/jarrod/Pictures/click_symbols/pokemon_menu.png", "down", 0.5, "x")

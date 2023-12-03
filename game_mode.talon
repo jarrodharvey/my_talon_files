@@ -13,7 +13,7 @@ tag(): user.rango_direct_clicking
 (repeat that | twice): core.repeat_command(1)
 
 # From community keys.talon
-[go] <user.arrow_keys>: user.move_cursor(arrow_keys)
+[(go | car)] <user.arrow_keys>: user.move_cursor(arrow_keys)
 <user.function_key>: key(function_key)
 #press <user.keys>: key(keys)
 
