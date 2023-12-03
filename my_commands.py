@@ -31,3 +31,8 @@ class Actions:
         # Note: This only works when playing Pokemon Full Screen. If you're playing in a window, you'll need to change the image.
         triangle_coordinates = actions.user.mouse_helper_find_template_relative("/home/jarrod/Pictures/click_symbols/dialogue_triangle.png")
         return(len(triangle_coordinates) > 0)
+    def image_appeared_on_screen(image_path: str):
+        """Detects if an image appears on screen"""
+        # returns true with a specific image of piece on the screen.
+        image_coordinates = actions.user.mouse_helper_find_template_relative(image_path)
+        return(len(image_coordinates) > 0)

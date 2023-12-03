@@ -1,6 +1,6 @@
 mode: user.game
 -
-(hold | bold | old) <user.arrow_keys>: user.hold_arrow(arrow_keys) 
+(hold | bold | old | home) <user.arrow_keys>: user.hold_arrow(arrow_keys) 
 
 stop:
     key("left:up")
@@ -8,3 +8,4 @@ stop:
     key("up:up")
     key("down:up")
     user.stop_keypress()
+    user.stop_grinding()
