@@ -22,7 +22,8 @@ class Actions:
     def start_grinding():
         """Start walking around in circles."""
         global grind_thread, keep_grinding
-        # Convert stop_on_no_triangle from string to boolean
+        # Stop any current button mashing before starting to grind
+        actions.user.stop_keypress()
         keep_grinding = True
         if grind_thread is None or not grind_thread.is_alive():
             grind_thread = threading.Thread(target=grind)

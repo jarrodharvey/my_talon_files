@@ -6,8 +6,8 @@ settings():
     key_wait = 20
 
 (bang | banks | bank | than | hang | fan | tanks | bin | thanks): key("x")
-back: key("z")
-pause: key("return")
+(back | pack): key("z")
+(pause | house): key("return")
 select: key("backspace")
 (trig | rig | trick) left: key("a")
 trig right: key("s")
@@ -52,14 +52,8 @@ advance: user.start_keypress("x", 1, "True")
 careful: user.start_keypress("x", 3)
 grind: user.start_grinding()
 
-double: 
-    key("x")
-    sleep(300ms)
-    key("x")
+double: user.multi_keypress("x", 0.3, 2)
+triple: user.multi_keypress("x", 0.3, 3)
 
-triple:
-    key("x")
-    sleep(300ms)
-    key("x")
-    sleep(300ms)
-    key("x")
+double back: user.multi_keypress("z", 0.3, 2)
+triple back: user.multi_keypress("z", 0.3, 3)

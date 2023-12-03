@@ -36,3 +36,8 @@ class Actions:
         # returns true with a specific image of piece on the screen.
         image_coordinates = actions.user.mouse_helper_find_template_relative(image_path)
         return(len(image_coordinates) > 0)
+    def multi_keypress(key_to_press: str, interval: float, times: int):
+        """Presses a key multiple times"""
+        for i in range(times):
+            actions.key(key_to_press)
+            time.sleep(interval)

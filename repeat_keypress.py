@@ -23,6 +23,8 @@ class Actions:
     def start_keypress(key_to_press: str, interval: float, stop_on_no_triangle: str = "False"):
         """Start pressing the X key once per second"""
         global keypress_thread, keep_pressing
+        # Stop any grinding before starting to press the key
+        actions.user.stop_grinding()
         # Convert stop_on_no_triangle from string to boolean
         stop_on_no_triangle = stop_on_no_triangle.lower() in ["true", "1", "yes"]
         keep_pressing = True
