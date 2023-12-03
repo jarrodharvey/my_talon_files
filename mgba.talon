@@ -55,5 +55,19 @@ grind: user.start_grinding()
 double: user.multi_keypress("x", 0.3, 2)
 triple: user.multi_keypress("x", 0.3, 3)
 
-double back: user.multi_keypress("z", 0.3, 2)
-triple back: user.multi_keypress("z", 0.3, 3)
+double back: user.multi_keypress("z", 1, 2)
+triple back: user.multi_keypress("z", 2, 3)
+
+run away: 
+    key("x")
+    sleep(5s)
+    key("down")
+    key("right")
+    key("x")
+    sleep(300ms)
+    key("x")
+
+save game: 
+    key("return")
+    sleep(1s)
+    user.start_keypress("down", 0.4)

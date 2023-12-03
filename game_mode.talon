@@ -36,3 +36,7 @@ righty:
     user.super_right()
     # close the mouse grid if open
     user.grid_close()
+
+test:
+    result = user.image_appeared_on_screen("/home/jarrod/Pictures/click_symbols/save_selected.png")
+    print(result)

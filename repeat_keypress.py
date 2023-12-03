@@ -11,6 +11,11 @@ def press_key(key_to_press: str, interval: float, stop_on_no_triangle: bool = Fa
         if actions.user.image_appeared_on_screen("/home/jarrod/Pictures/click_symbols/dialog_options.png"):
             # If the dialogue options are on screen, stop pressing the key
             actions.user.stop_keypress(key_to_press, False)
+        if actions.user.image_appeared_on_screen("/home/jarrod/Pictures/click_symbols/save_selected.png"):
+            # If the save button is on screen, 
+            # stop pressing the key and save the game
+            actions.user.multi_keypress("x", 0.3, 3)
+            actions.user.stop_keypress(key_to_press, False)
         actions.key(key_to_press)
         time.sleep(interval)
         if stop_on_no_triangle:
