@@ -8,10 +8,10 @@ keep_pressing = False
 
 def press_key(image_to_stop_on: str, key_to_press: str, interval: float, final_button_combo: str):
     while keep_pressing:
+        actions.key(key_to_press)
         if actions.user.image_appeared_on_screen(image_to_stop_on):
             # If the image is not on screen, stop pressing the key
             actions.user.stop_image_wait_keypress(final_button_combo, False)
-        actions.key(key_to_press)
         time.sleep(interval)
   
 @mod.action_class
