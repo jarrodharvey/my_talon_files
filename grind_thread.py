@@ -8,9 +8,15 @@ keep_grinding = False
 
 def grind():
     while keep_grinding:
-        if actions.user.image_appeared_on_screen("/home/jarrod/Pictures/click_symbols/wild.png"):
-            # If the wild Pokemon symbol is on screen, stop grinding 
-            actions.user.stop_grinding()
+        image_directory = "/home/jarrod/Pictures/click_symbols/"
+        image_files = ["wild.png", "pokemon_what_will.png"]
+
+        for image_file in image_files:
+            image_path = image_directory + image_file
+            if actions.user.image_appeared_on_screen(image_path):
+                actions.user.stop_keypress()
+                actions.user.stop_grinding()
+                break
         
         directions = ["up", "right", "down", "left"]
 

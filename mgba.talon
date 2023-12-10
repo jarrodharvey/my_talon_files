@@ -7,7 +7,7 @@ settings():
 
 (bang | banks | bank | than | hang | fan | tanks | bin | thanks | pan | fine | in | bird): key("x")
 (back | pack | track): key("z")
-(pause | house | boss | horse): key("return")
+(pause | house | boss | horse | course): key("return")
 select: key("backspace")
 (trig | rig | trick) left: key("a")
 trig right: key("s")
@@ -58,6 +58,12 @@ rightful:
 of the <user.number_small>:
     user.walk(arrow_keys)
     repeat(number_small - 1)
+a free:
+    user.walk("up")
+    repeat(2)
+<user.arrow_keys> fine:
+    user.walk(arrow_keys)
+    repeat(5)
 
 #mash: user.start_keypress("x", 1)
 mash: user.press_key_until_image_appears("/home/jarrod/Pictures/click_symbols/dialog_options.png", "x", 1, "stop")
@@ -71,7 +77,7 @@ triple: user.multi_keypress("x", 0.3, 3)
 
 double back: user.multi_keypress("z", 1, 2)
 triple back: user.multi_keypress("z", 2, 3)
-(quad | court | what) back: user.multi_keypress("z", 2, 5)
+(quad | court | what | quat) back: user.multi_keypress("z", 2, 5)
 
 run away: 
     key("x")
@@ -99,7 +105,8 @@ inventory:
     sleep(1s)
     user.press_key_until_image_appears("/home/jarrod/Pictures/click_symbols/pokemon_bag.png", "down", 0.5, "x")
 
-(nickname | hickman):
+(nickname | hickman | tick name):
+    mimic("stop")
     key("return")
     key("x")
     sleep(1s)
@@ -108,3 +115,45 @@ inventory:
     key("x")
 
 fulbright: user.hold_arrow("right")
+
+box moves:
+    key("x")
+    sleep(200ms)
+    key("down")
+    key("x")
+    sleep(2s)
+    key("right")
+    key("right")
+    key("right")
+
+(poke | mark | work | park) moves:
+    key("x")
+    sleep(200ms)
+    key("x")
+    sleep(2s)
+    key("right")
+    key("right")
+    key("right")
+
+(box | honks | walks) (deposit | withdraw):
+    key("x")
+    sleep(1s)
+    key("down")
+    sleep(200ms)
+    key("down")
+    key("x")
+
+computer:
+    key("return")
+    sleep(1s)
+    key("right")
+    sleep(500ms)
+    key("down")
+    key("down")
+    key("x")
+
+switch (poke | park):
+    key("x")
+    sleep(200ms)
+    key("down")
+    key("x")

@@ -9,10 +9,9 @@ keep_pressing = False
 def press_key(image_to_stop_on: str, key_to_press: str, interval: float, final_button_combo: str):
     while keep_pressing:
         actions.key(key_to_press)
-        if actions.user.image_appeared_on_screen(image_to_stop_on):
-            # If the image is not on screen, stop pressing the key
-            actions.user.stop_image_wait_keypress(final_button_combo, False)
         time.sleep(interval)
+        if actions.user.image_appeared_on_screen(image_to_stop_on):
+            actions.user.stop_image_wait_keypress(final_button_combo, False)
   
 @mod.action_class
 class Actions:
@@ -22,7 +21,8 @@ class Actions:
         # Stop any grinding before starting to press the key
         actions.user.stop_grinding()
         actions.user.stop_keypress()
-        # Convert stop_on_no_triangle from string to boolean
+        if actions.user.image_appeared_on_screen(image_to_stop_on):
+            actions.user.stop_image_wait_keypress(final_button_combo, False)
         keep_pressing = True
         if keypress_thread is None or not keypress_thread.is_alive():
             keypress_thread = threading.Thread(target=press_key, args=(image_to_stop_on, key_to_press, interval, final_button_combo))
