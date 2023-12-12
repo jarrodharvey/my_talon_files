@@ -65,8 +65,8 @@ a free:
     user.walk(arrow_keys)
     repeat(5)
 
-#mash: user.start_keypress("x", 1)
 mash: user.press_key_until_image_appears("/home/jarrod/Pictures/click_symbols/dialog_options.png", "x", 1, "stop")
+preview next: user.press_key_until_image_appears("/home/jarrod/Pictures/click_symbols/about_to_use.png", "x", 2, "stop")
 advance: user.start_keypress("x", 1, "True")
 (chatter | chatta): user.start_keypress("x", 2.5, "True")
 careful: user.start_keypress("x", 3)
@@ -95,7 +95,7 @@ run away:
 
 (pokeball | enemy team): key("a")
 
-(pokemon | perk amon): 
+(pokemon | perk amon | back on | quick amon): 
     key("return")
     sleep(1s)
     user.press_key_until_image_appears("/home/jarrod/Pictures/click_symbols/pokemon_menu.png", "down", 0.5, "x")
@@ -150,6 +150,7 @@ computer:
     sleep(500ms)
     key("down")
     key("down")
+    sleep(1s)
     key("x")
 
 switch (poke | park):
@@ -157,3 +158,11 @@ switch (poke | park):
     sleep(200ms)
     key("down")
     key("x")
+
+(big | back) <user.arrow_keys>:
+    user.walk(arrow_keys)
+    repeat(11)
+
+test: 
+    result = user.image_appeared_on_screen("/home/jarrod/Pictures/click_symbols/about_to_use.png")
+    print(result)

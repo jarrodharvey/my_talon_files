@@ -16,6 +16,7 @@ def grind():
             if actions.user.image_appeared_on_screen(image_path):
                 actions.user.stop_keypress()
                 actions.user.stop_grinding()
+                actions.user.stop_image_wait_keypress()
                 break
         
         directions = ["up", "right", "down", "left"]
@@ -30,6 +31,7 @@ class Actions:
         global grind_thread, keep_grinding
         # Stop any current button mashing before starting to grind
         actions.user.stop_keypress()
+        actions.user.stop_image_wait_keypress()
         keep_grinding = True
         if grind_thread is None or not grind_thread.is_alive():
             grind_thread = threading.Thread(target=grind)
