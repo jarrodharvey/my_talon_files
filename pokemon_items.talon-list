@@ -1,0 +1,6 @@
+list: user.pokemon_item
+mode: user.game
+-
+
+fishing: old_rod 
+machine: tm_case

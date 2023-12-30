@@ -37,3 +37,19 @@ class Actions:
                 return
             case "x":
                 actions.key("x")
+                return
+            case "xx":
+                actions.key("x")
+                time.sleep(2)
+                actions.key("x")
+                return
+            case "xlll":
+                actions.key("x")
+                time.sleep(2)
+                actions.user.walk("left")
+                actions.user.walk("left")
+                actions.user.walk("left")
+                return
+            case "walk_up_20":
+                for i in range(20):
+                    actions.user.walk("up")

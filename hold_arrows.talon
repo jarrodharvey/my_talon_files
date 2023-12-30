@@ -1,6 +1,6 @@
 mode: user.game
 -
-(hold | bold | old | home | all | bolt) <user.arrow_keys>: user.hold_arrow(arrow_keys) 
+(hold | bold | old | home | all | bolt | hot) <user.arrow_keys>: user.hold_arrow(arrow_keys) 
 
 stop:
     key("left:up")
