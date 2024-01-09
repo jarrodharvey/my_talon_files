@@ -6,6 +6,15 @@ mod = Module()
 keypress_thread = None
 keep_pressing = False
 
+def run():
+    actions.key("down")
+    time.sleep(0.3)
+    actions.key("right")
+    time.sleep(0.3)
+    actions.key("x")
+    time.sleep(0.7)
+    actions.key("x")
+
 def press_key(image_to_stop_on: str, key_to_press: str, interval: float, final_button_combo: str):
     while keep_pressing:
         actions.key(key_to_press)
@@ -15,11 +24,12 @@ def press_key(image_to_stop_on: str, key_to_press: str, interval: float, final_b
   
 @mod.action_class
 class Actions:
-    def press_key_until_image_appears(image_to_stop_on: str, key_to_press: str, interval: float, final_button_combo: str):
+    def press_key_until_image_appears(image_to_stop_on: str, key_to_press: str, interval: float, final_button_combo: str, stop_grinding: str = "True"):
         """Press a key until image_to_stop_on appears on screen"""
         global keypress_thread, keep_pressing
         # Stop any grinding before starting to press the key
-        actions.user.stop_grinding()
+        if stop_grinding.lower() in ["true", "1", "yes"]:
+            actions.user.stop_grinding()
         actions.user.stop_keypress()
         if actions.user.image_appeared_on_screen(image_to_stop_on):
             actions.user.stop_image_wait_keypress(final_button_combo, False)
@@ -53,3 +63,14 @@ class Actions:
             case "walk_up_20":
                 for i in range(20):
                     actions.user.walk("up")
+                return
+            case "postmortem":
+                actions.key("x")
+                time.sleep(3)
+                actions.key("x")
+                time.sleep(3)
+                actions.mimic("chatter")
+                return
+            case "run":
+                run()
+                return

@@ -5,15 +5,26 @@ mode: user.game
 settings():
     key_wait = 20
 
-(bang | banks | bank | than | hang | fan | tanks | bin | thanks | pan | fine | in | bird | thank | bin | burn): key("x")
+(bang | banks | than | hang | fan | tanks | bin | thanks | pan | fine | in | bird | thank | bin | burn): key("x")
 ^(back | pack | track)$: key("z")
 (pause | house | boss | horse | course): key("return")
 select: key("backspace")
 (trig | rig | trick) left: key("a")
 trig right: key("s")
 
+garrett: pass
+parkman: pass 
+perk amon: pass
+
+
 <user.arrow_keys>:
     user.walk(arrow_keys)
+
+<user.arrow_keys> in:
+    user.walk(arrow_keys)
+    repeat(7)
+
+dope: key("down")
 
 # homophones for arrow commands
 opt free:
@@ -21,7 +32,7 @@ opt free:
     repeat(3)
 (downfall | stand for):
     user.walk("down")
-    repeat(4) 
+    repeat(3) 
 apter:
     user.walk("up")
     repeat(2)
@@ -31,13 +42,13 @@ apter:
 <user.arrow_keys> to:    
     user.walk(arrow_keys)
     repeat(1)
-lefter:
+(lefter | left her):
     user.walk("left")
     repeat(2)
 caret: user.walk("right")
 rightful:
     user.walk("right")
-    repeat(4)
+    repeat(3)
 right it: 
     user.walk("right")
     repeat(8)
@@ -75,27 +86,27 @@ a free:
 gop: key("up")
 
 (mash | ash): user.press_key_until_image_appears("/home/jarrod/Pictures/click_symbols/dialog_options.png", "x", 1, "stop")
-(preview | breathe | brave you | pre be | privy | pray he | may be | pretty | i've ya) next: user.press_key_until_image_appears("/home/jarrod/Pictures/click_symbols/about_to_use.png", "x", 2, "stop")
+(preview | breathe | brave you | pre be | privy | pray he | may be | pretty | i've ya) next: user.press_key_until_image_appears("/home/jarrod/Pictures/click_symbols/about_to_use.png", "x", 3, "stop")
+chicken dinner: user.press_key_until_image_appears("/home/jarrod/Pictures/click_symbols/pokemon_defeated.png", "x", 2, "postmortem")
 advance: user.start_keypress("x", 1, "True")
-(chatter | chatta | challa | ca | hot up | car up | sit up): user.start_keypress("x", 2, "True")
+(chatter | hot up | chatta | challa | ca | hot up | car up | sit up): user.start_keypress("x", 2, "True")
 careful: user.start_keypress("x", 3)
 (grinding | grind in | caret in): user.start_grinding()
+breeding: user.start_breeding()
 
 (double | stubble | dope): user.multi_keypress("x", 0.3, 2)
-#triple: user.multi_keypress("x", 0.3, 3)
+threesome: user.multi_keypress("x", 0.3, 3)
 
 double back: user.multi_keypress("z", 1, 2)
 triple back: user.multi_keypress("z", 2, 3)
-(quad | court | what | quat) back: user.multi_keypress("z", 2, 5)
+(quad | court | what | quat) back: user.multi_keypress("z", 2, 6)
 
-run away: 
+(run away | fan in): 
     key("x")
-    sleep(5s)
-    key("down")
-    key("right")
-    key("x")
-    sleep(300ms)
-    key("x")
+    user.press_key_until_image_appears("/home/jarrod/Pictures/click_symbols/fight.png", "1", 1, "run")
+
+run grind:
+    user.start_grinding("True") 
 
 (save game | safe day | save dam | safe game | save them): 
     key("return")
@@ -104,10 +115,12 @@ run away:
 
 (pokeball | enemy team | pickup | click able): key("a")
 
-(pokemon | perk amon | back on | quick amon | become | Parkman): 
+(pokemon | rat one | back on | quick amon | become): 
     key("return")
     sleep(1s)
-    user.press_key_until_image_appears("/home/jarrod/Pictures/click_symbols/pokemon_menu.png", "down", 0.5, "x")
+    key("up")
+    sleep(1s)
+    user.press_key_until_image_appears("/home/jarrod/Pictures/click_symbols/pokemon_menu.png", "down", 1, "x")
 
 inventory:
     key("return")
@@ -157,18 +170,30 @@ computer:
     key("return")
     sleep(1s)
     key("right")
-    sleep(500ms)
-    key("down")
+    sleep(1s)
     key("down")
     sleep(1s)
     key("x")
+
+(navigator | letter go up):
+    key("return")
+    sleep(1s)
+    key("right")
+    sleep(1s)
+    key("x")
+
 
 switch (poke | park):
     key("x")
     sleep(200ms)
     user.press_key_until_image_appears("/home/jarrod/Pictures/click_symbols/switch.png", "down", 1, "x")
 
-(big | back | pack | sit | peak | thank | bit | he | pick) <user.arrow_keys>:
+(move relearn | a free fan):
+    key("x")
+    sleep(200ms)
+    user.press_key_until_image_appears("/home/jarrod/Pictures/click_symbols/move_relearn.png", "up", 1, "x")
+
+(big | back | buck | pack | sit | peak | thank | bit | he | pick) <user.arrow_keys>:
     user.walk(arrow_keys)
     repeat(11)
 
@@ -176,7 +201,7 @@ pickup:
     user.walk("up")
     repeat(11)
 
-(egret | big rat | tigrett| Garrett | secret):
+(egret | big rat | tigrett | secret):
     user.walk("right")
     repeat(11)
 
@@ -192,7 +217,7 @@ downtime:
     user.walk("down")
     repeat(10)
 
-skip doubles: user.press_key_until_image_appears("/home/jarrod/Pictures/click_symbols/do.png", "x", 1.5, "stop")
+skip doubles: user.press_key_until_image_appears("/home/jarrod/Pictures/click_symbols/do.png", "x", 2.5, "stop")
 
 begin game:
     key("return")
@@ -215,9 +240,70 @@ found <user.number_small>:
 
 continuous scroll: user.press_key_until_image_appears("/home/jarrod/Pictures/click_symbols/cancel.png", "down", 0.5, "stop")
 
-(keep current| cake current | kit cart | ca caret):
+(keep current| cake current | kit cart | ca caret | cake cart):
     key("x")
     sleep(2s)
     key("down")
     sleep(1s)
     key("x")
+
+give item:
+    sleep(1s)
+    key("x")
+    sleep(1s)
+    user.press_key_until_image_appears("/home/jarrod/Pictures/click_symbols/give.png", "down", 1, "x")
+
+(box next | banks rat) <number_small>:
+    user.box_nav("right")
+    repeat(number_small - 1)
+
+box previous <number_small>:
+    user.box_nav("left")
+    repeat(number_small - 1)
+
+poke effort:
+    key("x")
+    sleep(1s)
+    key("x")
+    sleep(2s)
+    key("right")
+    sleep(1s)
+    key("x")
+
+effort training: user.multi_keypress("x", 0.3, 5) 
+
+fishing: 
+   user.stop_image_wait_keypress() 
+   key("backspace") 
+   sleep(500ms)
+   key("a")
+   sleep(5s) 
+   key("x")
+    
+(poke rider | pan caret | pan chatta | ca chatta): 
+   user.stop_image_wait_keypress() 
+   key("backspace") 
+   sleep(500ms)
+   key("backspace") 
+
+item finder: 
+   user.stop_image_wait_keypress() 
+   key("backspace") 
+   sleep(500ms)
+   key("s") 
+
+(poke | click) scan:
+    key("s")
+
+# Enter battle, throw a rock, then throw a safari ball
+safari:
+    key("x")
+    sleep(2s)
+    key("down")
+    key(500ms)
+    key("x")
+    sleep(7s)
+    key("up")
+    sleep(500ms)
+    key("x")
+

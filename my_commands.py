@@ -41,3 +41,7 @@ class Actions:
         for i in range(times):
             actions.key(key_to_press)
             time.sleep(interval)
+    def box_nav(arrow_dir: str):
+        """Switch boxes"""
+        actions.key(f"{arrow_dir}")
+        time.sleep(1)
