@@ -29,7 +29,7 @@ def grind(run_away: bool = False):
         directions = ["up", "right", "down", "left"]
 
         for direction in directions:
-            [actions.user.walk(direction) for _ in range(random.randint(1, 10))]
+            [actions.user.walk(direction) for _ in range(1)]
 
 @mod.action_class
 class Actions:

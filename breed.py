@@ -10,10 +10,10 @@ keep_breeding = False
 def breed():
     while keep_breeding:
         actions.key("down:down")
-        time.sleep(5)
+        time.sleep(4.5)
         actions.key("down:up")
         actions.key("up:down")
-        time.sleep(5)
+        time.sleep(4.5)
         actions.key("up:up")
 
 @mod.action_class
