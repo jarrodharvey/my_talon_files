@@ -9,11 +9,11 @@ tag(): user.rango_direct_clicking
     mode.disable("user.game")
     mode.enable("command")
 
-<number_small> times: core.repeat_command(number_small - 1)
-(repeat that | twice): core.repeat_command(1)
+#<number_small> times: core.repeat_command(number_small - 1)
+#(repeat that | twice): core.repeat_command(1)
 
 # From community keys.talon
-[(go | car)] <user.arrow_keys>: user.move_cursor(arrow_keys)
+#[(go | car)] <user.arrow_keys>: user.move_cursor(arrow_keys)
 #press <user.keys>: key(keys)
 
 # From gaze-ocr
@@ -36,6 +36,5 @@ righty:
     # close the mouse grid if open
     user.grid_close()
 
-test:
-    result = user.image_appeared_on_screen("/home/jarrod/Pictures/click_symbols/save_selected.png")
-    print(result)
+focus <user.running_applications>: user.switcher_focus(running_applications)
+focus scarlet: user.switcher_focus("scarlet hollow")

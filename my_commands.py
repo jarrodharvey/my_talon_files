@@ -5,6 +5,17 @@ mod = Module()
 
 mod.mode("game", desc="Gaming mode")
 
+def str_to_bool(s):
+    # Converts a string to a boolean. 
+    # Assumes 'true', 'yes', '1' are True, and 'false', 'no', '0' are False.
+    # Case-insensitive comparison.
+    if s.lower() in ('true', 'yes', '1'):
+        return True
+    elif s.lower() in ('false', 'no', '0'):
+        return False
+    else:
+        raise ValueError("Cannot convert string to boolean: " + s)
+
 @mod.action_class
 class Actions:
     def super_click():
@@ -31,6 +42,12 @@ class Actions:
         # Note: This only works when playing Pokemon Full Screen. If you're playing in a window, you'll need to change the image.
         triangle_coordinates = actions.user.mouse_helper_find_template_relative("/home/jarrod/Pictures/click_symbols/dialogue_triangle.png")
         return(len(triangle_coordinates) > 0)
+
+    def ff_blue_on_screen():
+        """Detects if the final fantasy blue dialogue color is on screen"""
+        blue_coordinates = actions.user.mouse_helper_find_template_relative("/home/jarrod/Pictures/click_symbols/ff_blue.png")
+        return(len(blue_coordinates) > 0)
+    
     def image_appeared_on_screen(image_path: str):
         """Detects if an image appears on screen"""
         # returns true with a specific image of piece on the screen.
@@ -45,3 +62,30 @@ class Actions:
         """Switch boxes"""
         actions.key(f"{arrow_dir}")
         time.sleep(1)
+    def game_stop():
+        """Stop gaming mode actions"""
+        actions.key("left:up")
+        actions.key("right:up")
+        actions.key("up:up")
+        actions.key("down:up")
+        actions.user.stop_keypress()
+        actions.user.stop_grinding()
+        actions.user.stop_breeding()
+        actions.user.stop_image_wait_keypress()
+        actions.user.stop_image_disappear_keypress()
+        return
+    def diagonal(dir1: str, dir2: str, held_time: float = 0, hold: str = False):
+        """Travel diagonally in a game"""
+        hold = str_to_bool(hold)
+        hold_time_modifier = 0.4
+        actions.user.game_stop()
+        actions.key(f"{dir1}:down")
+        actions.key(f"{dir2}:down")
+        print("Held time: ", held_time)
+        time.sleep(held_time * hold_time_modifier)
+        if hold == False:
+            actions.key(f"{dir1}:up")
+            actions.key(f"{dir2}:up")
+        return
+
+
