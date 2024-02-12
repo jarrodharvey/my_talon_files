@@ -1,9 +1,12 @@
 from talon import Module, actions, ctrl
 import time
+import json
 
 mod = Module()
 
 mod.mode("game", desc="Gaming mode")
+
+mod.list("cardinal_direction", "Match compass directions to arrows")
 
 def str_to_bool(s):
     # Converts a string to a boolean. 
@@ -87,5 +90,19 @@ class Actions:
             actions.key(f"{dir1}:up")
             actions.key(f"{dir2}:up")
         return
+    def write_to_repeat_file(button: str, wait_time: float):
+        """Write button and wait_time to repeat.json"""
+        repeat_file = "/home/jarrod/mint_scripts/repeat.json"
+            # Data to be written
+        data = {
+            "button": button,
+            "wait_time": wait_time
+        }
+        
+        # Writing to repeat.json
+        with open(repeat_file, 'w') as file:
+            json.dump(data, file)
+
+
 
 

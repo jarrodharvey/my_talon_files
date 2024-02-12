@@ -1,0 +1,13 @@
+list: user.cardinal_direction
+mode: user.game
+-
+
+north: up
+
+east: right
+best: right
+
+south: down
+self: down
+
+west: left
