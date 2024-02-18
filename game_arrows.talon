@@ -85,10 +85,14 @@ gop: key("up")
     user.walk(arrow_keys)
     repeat(3)
 
-rut: key("right")
+(rut | write): key("right")
 
 [move] <user.arrow_keys>: key(arrow_keys)
 
 (big | leak | back | buck | pack | sit | thank | bit | he | pick) <user.arrow_keys>:
     user.walk(arrow_keys)
     repeat(11)
+
+rotor:
+    user.walk("right")
+    repeat(2)

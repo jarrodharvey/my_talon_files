@@ -5,6 +5,8 @@ mode: user.game
 north: up
 
 east: right
+base: right
+paste: right
 best: right
 
 south: down

@@ -6,7 +6,7 @@ settings():
     key_wait = 20
 
 # x button
-(bang | bran | burn | spang | bank | banks | bin | burn | hang): key("return") 
+(bang | fine | base | bran | burn | spang | bank | banks | bin | burn | hang): key("return") 
 
 # o button
 ^(back | buck | pack | track)$: key("a")
@@ -25,7 +25,7 @@ menu: key(";")
 ^{user.cardinal_direction} <number>$: user.diagonal(cardinal_direction, cardinal_direction, number, "False") 
 
 # Other cardinal directions
-^(northeast | next | mixed | no fast) [hold]$: user.diagonal("up", "right", 0, "True") 
+^(northeast | next | vext | mixed | no fast) [hold]$: user.diagonal("up", "right", 0, "True") 
 ^(southeast | sex | six | texts | solace | no fast | selfish) [hold]$: user.diagonal("right", "down", 0, "True") 
 ^(northwest | now) [hold]$: user.diagonal("up", "left", 0, "True")
 ^(southwest | swish | bush) [hold]$: user.diagonal("left", "down", 0, "True")
@@ -36,6 +36,13 @@ menu: key(";")
 ^(southwest | swish) <number>$: user.diagonal("left", "down", number, "False")
 
 sector: user.diagonal("right", "down", 2, "False") 
+dexter: user.diagonal("right", "up", 2, "False") 
+softer: user.diagonal("down", "down", 2, "False") 
+swish tor: user.diagonal("down", "left", 2, "False") 
+sex full: user.diagonal("down", "right", 4, "False") 
+vex wife: user.diagonal("up", "right", 5, "False") 
+not true: user.diagonal("up", "left", 2, "False") 
+now full: user.diagonal("up", "left", 4, "False") 
 
 ###
 
@@ -44,7 +51,7 @@ sector: user.diagonal("right", "down", 2, "False")
 save game state: key(f5)
 load game state: key(f7)
 
-(double | Tuttle | stubble | dope): user.multi_keypress("return", 0.3, 2)
+(double | bubble | Tuttle | stubble | dope): user.multi_keypress("return", 0.3, 2)
 triple: user.multi_keypress("return", 0.3, 3)
 quadruple: user.multi_keypress("return", 0.3, 4)
 
@@ -62,7 +69,7 @@ examine:
     sleep(1s)
     user.game_stop()
 
-use items:
+use (items | item):
     key("down:down")
     sleep(1s)
     key("return")
@@ -89,6 +96,14 @@ runaway:
 attack: user.write_to_repeat_file("Return", 0.5)
 conversation: user.write_to_repeat_file("Return", 1.5)
 
-puppy: user.hud_publish_content('puppy')
-
-kitten: user.hud_disable_id('Text panel')
+camera left:
+    user.game_stop()
+    key("u:down")
+    key("left:down")
+(camera right | coma rut):
+    user.game_stop()
+    key("u:down")
+    key("right:down")
+(camera off | coma stop):
+    user.game_stop()
+    key("u:up")

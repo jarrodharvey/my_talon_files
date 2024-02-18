@@ -92,6 +92,7 @@ class Actions:
         return
     def write_to_repeat_file(button: str, wait_time: float):
         """Write button and wait_time to repeat.json"""
+        actions.user.game_stop()
         repeat_file = "/home/jarrod/mint_scripts/repeat.json"
             # Data to be written
         data = {
