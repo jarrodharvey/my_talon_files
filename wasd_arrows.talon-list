@@ -1,0 +1,9 @@
+list: user.wasd_arrows
+mode: user.game
+-
+
+up: w
+down: s
+left: a
+right: d
+rat: d

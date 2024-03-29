@@ -7,6 +7,7 @@ mod = Module()
 mod.mode("game", desc="Gaming mode")
 
 mod.list("cardinal_direction", "Match compass directions to arrows")
+mod.list("wasd_arrows", "Arrows for the wasd movement letters")
 
 def str_to_bool(s):
     # Converts a string to a boolean. 
@@ -25,7 +26,7 @@ class Actions:
         """Click the mouse"""
         #actions.mouse_click(0)
         ctrl.mouse_click(button=0, down=True)
-        time.sleep(1)
+        time.sleep(0.05)
         ctrl.mouse_click(button=0, up=True)
     def super_right():
         """Click the right mouse"""
@@ -71,24 +72,30 @@ class Actions:
         actions.key("right:up")
         actions.key("up:up")
         actions.key("down:up")
+        actions.key("u:up")
+        actions.key("w:up")
+        actions.key("a:up")
+        actions.key("s:up")
+        actions.key("d:up")
         actions.user.stop_keypress()
         actions.user.stop_grinding()
         actions.user.stop_breeding()
+        actions.user.stop_random()
         actions.user.stop_image_wait_keypress()
         actions.user.stop_image_disappear_keypress()
+        actions.user.hud_disable_id('Text panel')
         return
     def diagonal(dir1: str, dir2: str, held_time: float = 0, hold: str = False):
         """Travel diagonally in a game"""
         hold = str_to_bool(hold)
-        hold_time_modifier = 0.4
+        hold_time_modifier = 0.2
         actions.user.game_stop()
         actions.key(f"{dir1}:down")
         actions.key(f"{dir2}:down")
         print("Held time: ", held_time)
         time.sleep(held_time * hold_time_modifier)
         if hold == False:
-            actions.key(f"{dir1}:up")
-            actions.key(f"{dir2}:up")
+            actions.user.game_stop()
         return
     def write_to_repeat_file(button: str, wait_time: float):
         """Write button and wait_time to repeat.json"""
@@ -103,7 +110,13 @@ class Actions:
         # Writing to repeat.json
         with open(repeat_file, 'w') as file:
             json.dump(data, file)
-
+    def capitalize_first_letter(word: str):
+        """Capitalizes the first letter of a word"""
+        return word.capitalize()
+    def sleep_hold(time: float):
+        """Sleeps for a specified amount of time"""
+        user.sleep_hold(1)
+        time.sleep(time)
 
 
 

@@ -13,6 +13,14 @@ mode: user.game
 <user.arrow_keys>:
     user.walk(arrow_keys)
 
+<user.arrow_keys> twice:
+    user.walk(arrow_keys)
+    repeat(1)
+
+<user.arrow_keys> free:
+    user.walk(arrow_keys)
+    repeat(2)
+
 <user.arrow_keys> <number_small>:
     user.walk(arrow_keys)
     repeat(number_small - 1)
@@ -96,3 +104,12 @@ gop: key("up")
 rotor:
     user.walk("right")
     repeat(2)
+
+(donate | down it):
+    user.walk("down")
+    repeat(8)
+
+wright twice:
+    user.walk("right")
+    repeat(1)
+
