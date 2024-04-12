@@ -7,6 +7,7 @@ mod = Module()
 mod.mode("game", desc="Gaming mode")
 
 mod.list("cardinal_direction", "Match compass directions to arrows")
+mod.tag("cardinal_directions", "Match compass directions to arrows")
 mod.list("wasd_arrows", "Arrows for the wasd movement letters")
 
 def str_to_bool(s):
@@ -88,7 +89,7 @@ class Actions:
     def diagonal(dir1: str, dir2: str, held_time: float = 0, hold: str = False):
         """Travel diagonally in a game"""
         hold = str_to_bool(hold)
-        hold_time_modifier = 0.2
+        hold_time_modifier = 0.6
         actions.user.game_stop()
         actions.key(f"{dir1}:down")
         actions.key(f"{dir2}:down")
@@ -117,6 +118,37 @@ class Actions:
         """Sleeps for a specified amount of time"""
         user.sleep_hold(1)
         time.sleep(time)
-
-
-
+    def explore_direction(direction: str):
+        """Go in the specified direction fifteen times and then go in the opposite direction fifteen times using arrow keys representation."""
+    
+        # Define the opposite directions for arrow keys
+        opposite_directions = {
+            'up': 'down',
+            'down': 'up',
+            'left': 'right',
+            'right': 'left'
+        }
+        
+        # Check if the direction is valid
+        if direction not in opposite_directions:
+            print("Invalid direction. Please choose 'up', 'down', 'left', or 'right'.")
+            return
+        
+        # Get the opposite direction
+        opposite_direction = opposite_directions[direction]
+        
+        # Simulate going in the specified direction fifteen times
+        for _ in range(15):
+            print(f"Pressing {direction} arrow key")
+            actions.key(direction)
+            
+        # Simulate going in the opposite direction fifteen times
+        for _ in range(15):
+            print(f"Pressing {opposite_direction} arrow key")
+            actions.key(opposite_direction)
+    def attempt_image_click(image_path: str):
+        """Attempts to click an image on the screen. Does not throw an error if clicking fails."""
+        actions.app.notify(f"Image coordinates: {image_coordinates}")
+        if len(image_coordinates) > 0:
+            actions.user.mouse_helper_move_image_relative(image_path)
+            actions.user.super_click()

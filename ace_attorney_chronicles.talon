@@ -1,6 +1,7 @@
 app: steam_app_1158850
 mode: user.game
 -
+
 settings():
     key_wait = 30
 
@@ -73,7 +74,7 @@ triple: user.multi_keypress("return", 2, 3)
     sleep(1s)
     user.multi_keypress("return", 0.8, 3)
 
-(save | shave) game:
+((save | shave) game | so okay):
     key("g")
     sleep(1s)
     key("return")
