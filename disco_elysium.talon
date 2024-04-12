@@ -82,5 +82,5 @@ settings():
     user.super_click()
 
 parrot(click): 
-    user.attempt_image_click("/home/jarrod/Pictures/click_symbols/disco_continue_purple.png")
     user.attempt_image_click("/home/jarrod/Pictures/click_symbols/disco_continue_red.png")
+    user.attempt_image_click("/home/jarrod/Pictures/click_symbols/disco_continue_purple.png")

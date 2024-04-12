@@ -148,7 +148,7 @@ class Actions:
             actions.key(opposite_direction)
     def attempt_image_click(image_path: str):
         """Attempts to click an image on the screen. Does not throw an error if clicking fails."""
-        actions.app.notify(f"Image coordinates: {image_coordinates}")
+        image_coordinates = actions.user.mouse_helper_find_template_relative(image_path)
         if len(image_coordinates) > 0:
             actions.user.mouse_helper_move_image_relative(image_path)
             actions.user.super_click()
