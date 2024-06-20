@@ -8,6 +8,8 @@ mod.mode("game", desc="Gaming mode")
 
 mod.list("cardinal_direction", "Match compass directions to arrows")
 mod.tag("cardinal_directions", "Match compass directions to arrows")
+mod.tag("boxes_gaming", "Used for boxes in gaming")
+mod.tag("user_arrows", "Arrows for gaming")
 mod.list("wasd_arrows", "Arrows for the wasd movement letters")
 
 def str_to_bool(s):
@@ -69,6 +71,7 @@ class Actions:
         time.sleep(1)
     def game_stop():
         """Stop gaming mode actions"""
+        actions.user.flex_grid_boxes_toggle(0)
         actions.key("left:up")
         actions.key("right:up")
         actions.key("up:up")

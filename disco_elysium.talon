@@ -3,6 +3,7 @@ mode: user.game
 -
 
 tag(): user.cardinal_directions
+tag(): user.user_arrows
 settings():
     key_wait = 30
 
@@ -10,7 +11,10 @@ settings():
 ^(back | brack | buck | pack | track)$: key("escape")
 
 ^character$: key("c")
-^inventory$: key("i")
+^inventory$: 
+    key("i")
+    sleep(1s)
+    user.flex_grid_box_config_change("threshold", 40)
 ^thinking$: key("t")
 ^(journal | channel)$: key("j")
 ^help$: key("f1")
@@ -29,7 +33,7 @@ settings():
 ^(highlight | pilot)$: key("tab:down")
 ^release$: key("tab:up")
 
-^<number>$: key("{number}")
+^<number_small>$: key("{number_small}")
 ^true$: key("2")
 ^want$: key("1")
 ^seventh$: key("7")
@@ -39,6 +43,8 @@ settings():
     mouse_click(0)
     sleep(30ms)
     mouse_click(0)
+    sleep(1s)
+    user.flex_grid_box_config_change("threshold", 40)
 
 # Boxes
 ^boxes$: user.flex_grid_setup_boxes()
@@ -84,3 +90,12 @@ settings():
 parrot(click): 
     user.attempt_image_click("/home/jarrod/Pictures/click_symbols/disco_continue_red.png")
     user.attempt_image_click("/home/jarrod/Pictures/click_symbols/disco_continue_purple.png")
+    user.attempt_image_click("/home/jarrod/Pictures/click_symbols/disco_continue_yellow.png")
+    user.attempt_image_click("/home/jarrod/Pictures/click_symbols/disco_continue_blue.png")
+    user.attempt_image_click("/home/jarrod/Pictures/click_symbols/disco_end.png")
+
+^[left] (touch | click) <user.timestamped_prose>$:
+    user.click_text(timestamped_prose)
+
+^take all$:
+    key("return")

@@ -9,32 +9,3 @@ tag(): user.rango_direct_clicking
     mode.disable("user.game")
     mode.enable("command")
 
-#<number_small> times: core.repeat_command(number_small - 1)
-#(repeat that | twice): core.repeat_command(1)
-
-# From community keys.talon
-#[(go | car)] <user.arrow_keys>: user.move_cursor(arrow_keys)
-#press <user.keys>: key(keys)
-
-# From gaze-ocr
-[left] (touch | click | quick) <user.timestamped_prose>$:
-    user.click_text(timestamped_prose)
-
-# From mouse.talon
-touch:
-    #mouse_click(0)
-    user.super_click()
-    # close the mouse grid if open
-    user.grid_close()
-    # End any open drags
-    # Touch automatically ends left drags so this is for right drags specifically
-    user.mouse_drag_end()
-
-righty:
-    #mouse_click(1)
-    user.super_right()
-    # close the mouse grid if open
-    user.grid_close()
-
-focus <user.running_applications>: user.switcher_focus(running_applications)
-focus scarlet: user.switcher_focus("scarlet hollow")

@@ -2,26 +2,32 @@ app: steam_app_1158850
 mode: user.game
 -
 
+tag(): user.user_arrows
+tag(): user.boxes_gaming
 settings():
     key_wait = 30
-
-super click: user.super_click()
-
-boxes: user.flex_grid_setup_boxes()
-box click <number>: user.flex_grid_go_to_box(number or 1, 0)
 
 (soup | sick | so | sit):
     user.game_stop()
     user.full_grid_select_screen(1)
     user.full_grid_activate()
 
-(bang | thank | fine | base | bran | burn | spang | bank | banks | bin | burn | hang): key("return") 
+(bang | thank | fine | base | bran | burn | spang | bank | banks | bin | burn | hang): 
+    key("return") 
+    user.flex_grid_boxes_toggle(0)
 
-^(back | buck | pack | track)$: key("z")
+^(back | buck | pack | track)$: 
+    key("z")
+    user.flex_grid_boxes_toggle(0)
 (quad | court | what | quat) back: user.multi_keypress("z", 2, 5)
 
-court record: key("e")
-(objection | take that | got it | present): key("r")
+court record: 
+    key("e")
+    sleep(2s)
+    user.flex_grid_setup_boxes()
+(objection | take that | got it | present):
+    key("r")
+    user.flex_grid_boxes_toggle(0)
 (history | his tree): key("t")
 (press | hold it | review scene): key("q")
 (options | pause): key("g")
@@ -89,3 +95,8 @@ scan <user.arrow_keys>:
 explore: user.start_random()
 
 weft: key("left")
+
+^<number>$: 
+    user.flex_grid_go_to_box(number or 1, 0)
+    sleep(1s)
+    user.flex_grid_setup_boxes()
