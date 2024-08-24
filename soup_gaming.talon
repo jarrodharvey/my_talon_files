@@ -21,5 +21,5 @@ and mode: user.game
 #^<user.word>$: pass
 #(pie | back): pass
 
-parrot(tch): 
-    user.super_click()
+#parrot(tch): 
+#    user.super_click()

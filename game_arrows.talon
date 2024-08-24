@@ -32,7 +32,7 @@ mode: user.game
     user.walk(arrow_keys)
     repeat(7)
 
-dope: key("down")
+(dope | dot): key("down")
 
 # homophones for arrow commands
 opt free:
@@ -50,7 +50,7 @@ apter:
 <user.arrow_keys> to:    
     user.walk(arrow_keys)
     repeat(1)
-(lefter | left her):
+^(lefter | left her)$:
     user.walk("left")
     repeat(2)
 caret: user.walk("right")
@@ -66,9 +66,6 @@ not for:
 don't ice:
     user.walk("down")
     user.walk("down")
-spin rat:
-    user.walk("right")
-    user.walk("right")
 wolfed: user.walk("left")
 rut: user.walk("right")
 girlish: user.walk("right")

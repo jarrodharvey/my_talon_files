@@ -15,25 +15,27 @@ tag(): user.boxes_gaming
 parrot(click): key("space")
 
 ^(back | buck | pack | track)$: key("x")
+parrot(tch): key("x")
 
 (mash | match): user.write_to_repeat_file("space", 4)
+rapid: user.write_to_repeat_file("space", 1)
 
 ^system$: key("escape")
 ^fight$: key("escape")
 
 ^save game$: 
     key("escape")
-    sleep(2s)
+    sleep(1s)
     key("space")
     sleep(2s)
     key("space")
-    sleep(2s)
+    sleep(1s)
     key("left")
-    sleep(2s)
+    sleep(1s)
     key("space")
-    sleep(2s)
+    sleep(1s)
     key("x")
-    sleep(2s)
+    sleep(1s)
     key("x")
 
 (quad | court | what | quat) back: user.multi_keypress("x", 2, 4)
@@ -49,10 +51,10 @@ back twice: user.multi_keypress("x", 2, 2)
 ^unit details$: key("f")
 ^zeal cost$: key("f")
 
-^rotate <user.arrow_keys>$:
-    key("x:down")
-    key(arrow_keys)
-    key("x:up")
+^rot <user.arrow_keys> <number_small>$: 
+    user.ute_rotate(arrow_keys)
+    repeat(number_small - 1)
+
 
 ^view units$: key("r")
 
@@ -80,9 +82,36 @@ double back: user.multi_keypress("z", 1, 2)
     key("o")
     repeat(number - 1)
 
-^allocate <number>$: 
-    user.multi_keypress("right", 1, number)
+^(allocate | alt cap | alt) <number>$: 
+    user.multi_keypress("right", 0.5, number)
+    key("space")
+    sleep(500ms)
+    key("left")
+    key("space")
+    sleep(500ms)
+    key("e")
+
+^item <number>$:
+    key("space")
+    sleep(500ms)
+    key("down")
+    repeat(number - 1)
+    key("space")
+
+^move$: 
+    key("space")
+    sleep(1500ms)
+    key("space")
+    sleep(500ms)
+    key("space")
+
+^attack$: 
+    key("space")
+    sleep(2s)
+    key("space")
+    sleep(6s)
+    key("space")
+    sleep(2s)
     key("space")
     sleep(1s)
-    key("left")
     key("space")

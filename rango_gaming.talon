@@ -1,4 +1,4 @@
-tag: browser
+app: Chromium-browser
 and tag: user.rango_direct_clicking
 mode: user.game
 -
@@ -8,18 +8,22 @@ mode: user.game
 ^<user.rango_hint_double> (twice | second)$: user.rango_command_with_target("directClickElement", rango_hint_double)
 <user.letter>: key(letter)
 
-but: pass
-
-# Idiotic things that talon mishears
-^wail$: user.rango_command_with_target("clickElement", "w")
-^neal$: user.rango_command_with_target("clickElement", "n")
+## Idiotic things that talon mishears
+^(beach | och | booth | east)$: user.rango_command_with_target("clickElement", "e")
+^(cup | top | cow | cunt)$: user.rango_command_with_target("clickElement", "c")
+^but$: user.rango_command_with_target("clickElement", "b")
+^meal$: user.rango_command_with_target("clickElement", "n")
+^there$: user.rango_command_with_target("clickElement", "a")
 ^drop$: user.rango_command_with_target("clickElement", "t")
-^heart$: user.rango_command_with_target("clickElement", "h")
-^som$: user.rango_command_with_target("clickElement", "s")
-^final$: user.rango_command_with_target("clickElement", "f")
-^cup$: user.rango_command_with_target("clickElement", "c")
+^(drink | thrum | drop)$: user.rango_command_with_target("clickElement", "d")
+^fun$: user.rango_command_with_target("clickElement", "f")
+^(neal): user.rango_command_with_target("clickElement", "n")
 ^hope$: user.rango_command_with_target("clickElement", "h")
-^there$: user.rango_command_with_target("clickElement", "t")
-^here$: user.rango_command_with_target("clickElement", "a")
-^jack$: user.rango_command_with_target("clickElement", "y")
-^(peach | ich)$: user.rango_command_with_target("clickElement", "e")
+^(wail | wile | wale)$: user.rango_command_with_target("clickElement", "w")
+^(east wale)$: user.rango_command_with_target("clickElement", "ew")
+^(each plex | fuck)$: user.rango_command_with_target("clickElement", "ex")
+^(air each)$: user.rango_command_with_target("clickElement", "ae")
+^(air eh)$: user.rango_command_with_target("clickElement", "ae")
+^(drum cup)$: user.rango_command_with_target("clickElement", "dc")
+^(cheery | jeer)$: user.rango_command_with_target("clickElement", "j")
+^(five)$: user.rango_command_with_target("clickElement", "f")

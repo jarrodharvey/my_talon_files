@@ -12,6 +12,8 @@ mod.tag("boxes_gaming", "Used for boxes in gaming")
 mod.tag("user_arrows", "Arrows for gaming")
 mod.list("wasd_arrows", "Arrows for the wasd movement letters")
 
+travel_distance = 1
+
 def str_to_bool(s):
     # Converts a string to a boolean. 
     # Assumes 'true', 'yes', '1' are True, and 'false', 'no', '0' are False.
@@ -25,11 +27,11 @@ def str_to_bool(s):
 
 @mod.action_class
 class Actions:
-    def super_click():
+    def super_click(duration: int = 0.05):
         """Click the mouse"""
         #actions.mouse_click(0)
         ctrl.mouse_click(button=0, down=True)
-        time.sleep(0.05)
+        time.sleep(duration)
         ctrl.mouse_click(button=0, up=True)
     def super_right():
         """Click the right mouse"""
@@ -81,6 +83,8 @@ class Actions:
         actions.key("a:up")
         actions.key("s:up")
         actions.key("d:up")
+        actions.key("alt:up")
+        actions.key("x:up")
         actions.user.stop_keypress()
         actions.user.stop_grinding()
         actions.user.stop_breeding()
@@ -88,11 +92,13 @@ class Actions:
         actions.user.stop_image_wait_keypress()
         actions.user.stop_image_disappear_keypress()
         actions.user.hud_disable_id('Text panel')
+        actions.user.mouse_drag_end()
         return
     def diagonal(dir1: str, dir2: str, held_time: float = 0, hold: str = False):
         """Travel diagonally in a game"""
         hold = str_to_bool(hold)
-        hold_time_modifier = 0.6
+        # The higher the hold_time_modifier, the faster the diagonal movement
+        hold_time_modifier = 0.1 * travel_distance
         actions.user.game_stop()
         actions.key(f"{dir1}:down")
         actions.key(f"{dir2}:down")
@@ -101,6 +107,11 @@ class Actions:
         if hold == False:
             actions.user.game_stop()
         return
+    def set_travel_distance(distance: int):
+        """Set the travel distance for diagonal movement"""
+        global travel_distance
+        travel_distance = distance
+        app.notify(f"Travel distance set to {distance}")
     def write_to_repeat_file(button: str, wait_time: float):
         """Write button and wait_time to repeat.json"""
         actions.user.game_stop()
@@ -155,3 +166,26 @@ class Actions:
         if len(image_coordinates) > 0:
             actions.user.mouse_helper_move_image_relative(image_path)
             actions.user.super_click()
+    def hold_mouse_ms(ms: int):
+        """Holds the mouse for a specified amount of time"""
+        ctrl.mouse_click(button=0, down=True)
+        time.sleep(ms / 1000)
+        ctrl.mouse_click(button=0, up=True)
+    def divide_by_forty_five(number: int):
+        """Divides a number by 45 and rounds to the nearest whole number; returns a maximum of 360"""
+        return min(round(number / 45), 8)
+    def trails_menu(menu_option: str):
+        """Navigates to a menu item in trails in the sky"""
+        actions.key("ctrl")
+        time.sleep(1)
+        actions.user.move_to_spot(menu_option)
+        time.sleep(1)
+        actions.user.super_click()
+        time.sleep(1)
+        actions.key("space")
+    def ute_rotate(direction: str):
+        """Rotates the camera in the game Ute"""
+        actions.user.key("x:down")
+        actions.user.key(direction)
+        actions.user.key("x:up")
+        time.sleep(0.5)
